@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayne Enterprises — State of the Enterprise Report | Q4 2024</title>
+  <meta name="description" content="Comprehensive board-level analytics report for Wayne Enterprises covering financial performance, security operations, R&D, supply chain, and human capital across 2023-2024.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#hero">
+      <div class="nav-logo">WE</div>
+      <div>
+        <div class="nav-title">Wayne Enterprises</div>
+        <div class="nav-subtitle">Board Analytics</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#narratives" class="active">Narratives</a></li>
+      <li><a href="#dashboards">Dashboards</a></li>
+      <li><a href="#predictions">Outlook</a></li>
+    </ul>
+    <div class="nav-date">Report: Q4 2024</div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero" aria-labelledby="hero-heading">
+  <div class="hero-grid-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Confidential — Board Level Report
+    </div>
+    <h1 id="hero-heading">
+      State of the<br><span class="gradient-text">Enterprise</span>
+    </h1>
+    <p class="hero-subtitle">
+      A comprehensive data-driven analysis prepared for the incoming CEO.
+      What is happening across Wayne Enterprises — and what is going to happen next.
+    </p>
+
+    <div class="hero-kpis reveal-stagger" id="hero-kpis">
+      <div class="kpi-card">
+        <div class="kpi-value" data-target="14.8" data-suffix="B" data-prefix="$">$0</div>
+        <div class="kpi-label">Total Revenue FY2024</div>
+        <div class="kpi-change positive">▲ 18.2% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value" data-target="4.12" data-suffix="B" data-prefix="$">$0</div>
+        <div class="kpi-label">Net Profit FY2024</div>
+        <div class="kpi-change positive">▲ 22.5% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value" data-target="75" data-suffix="" data-prefix="">0</div>
+        <div class="kpi-label">Active R&D Projects</div>
+        <div class="kpi-change positive">▲ 12 New</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value" data-target="52.4" data-suffix="K" data-prefix="">0</div>
+        <div class="kpi-label">Global Workforce</div>
+        <div class="kpi-change positive">▲ 6.8% Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DATA NARRATIVES ═══════════════ -->
+<section class="section" id="narratives">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Data Narratives</div>
+      <h2 class="section-title">The Stories Behind the Numbers</h2>
+      <p class="section-subtitle">Six editorial analyses that decode the key trends shaping Wayne Enterprises</p>
+    </div>
+
+    <!-- NARRATIVE 1: Financial Performance -->
+    <article class="narrative" id="narrative-financial">
+      <div class="narrative-card">
+        <div class="narrative-top-bar blue"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category">Financial Performance</span>
+            <span class="narrative-date">Analysis Period: Q1 2023 — Q4 2024</span>
+          </div>
+          <h3 class="narrative-headline">Construction & Aerospace Power Record-Breaking Revenue as Wayne Enterprises Crosses $14B</h3>
+          <p class="narrative-subhead">Wayne Construction's 29% CAGR and Aerospace's unwavering growth engine pushed the enterprise past a $14 billion revenue milestone — while the Foundation expanded social impact at planned losses.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p>In a year marked by global economic headwinds, Wayne Enterprises demonstrated remarkable resilience. <strong>Wayne Construction</strong> emerged as the standout performer, growing from $2.1B in Q1 2023 to <span class="stat-highlight">$3.38B in Q4 2024</span> — a staggering 61% increase driven by the Gotham Smart City Initiative and international infrastructure contracts.</p>
+              <p><strong>Wayne Aerospace</strong> maintained its position as the innovation anchor, with quarterly revenue climbing from $1.25B to <span class="stat-highlight">$1.95B</span>, propelled by defense contracts and the commercial satellite program. Notably, R&D investment as a percentage of revenue held steady at ~10%, signaling continued commitment to long-term competitiveness.</p>
+              <p>The <strong>Wayne Foundation</strong>, operating by design at a loss, expanded its programs significantly — revenue grew 102% while deepening community impact across Gotham's underserved districts. This strategic philanthropy is increasingly becoming a competitive moat for talent acquisition and civic goodwill.</p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">Quarterly Revenue by Division ($M)</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-revenue"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">$14.8B</div>
+                  <div class="narrative-stat-label">FY2024 Revenue</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">27.8%</div>
+                  <div class="narrative-stat-label">Avg Profit Margin</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">$1.14B</div>
+                  <div class="narrative-stat-label">Total R&D Spend</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NARRATIVE 2: Security Operations -->
+    <article class="narrative" id="narrative-security">
+      <div class="narrative-card">
+        <div class="narrative-top-bar emerald"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category" style="color:var(--accent-emerald)">Gotham Security</span>
+            <span class="narrative-date">Monthly Tracking: Jan 2023 — Jun 2024</span>
+          </div>
+          <h3 class="narrative-headline">Gotham's Streets Are Getting Safer — But The Narrows Still Demands Attention</h3>
+          <p class="narrative-subhead">Bristol achieved near-zero crime incidents while Wayne Tech deployments drove a 40% average reduction in security incidents across Gotham — yet The Narrows remains a persistent challenge.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p><strong>Bristol</strong> has become Gotham's safest district, recording <span class="stat-highlight">zero security incidents</span> in June 2024 with a perfect 10.0 public safety score and 100% crime prevention effectiveness. Response times dropped to an extraordinary 1.0 minute — effectively real-time intervention powered by 213 Wayne Tech deployments.</p>
+              <p><strong>Park Row</strong> showed the most dramatic transformation: incidents fell from 32 to just 1 over 18 months, with crime prevention effectiveness reaching 97.5%. This district's turnaround correlates directly with the tripling of community engagement events from 12 to 23.</p>
+              <p>However, <strong>The Narrows</strong> remains Gotham's most challenging zone. While incidents did fall from 98 to 60 — a 39% improvement — the district still accounts for 43% of all citywide incidents. Response times, while improved from 6.2 to 3.8 minutes, lag behind other districts by more than double. The data suggests more aggressive Wayne Tech deployment and community investment are needed here.</p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">Security Incidents by District (Monthly Trend)</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-security"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value" style="color:var(--accent-emerald)">-42%</div>
+                  <div class="narrative-stat-label">Avg Incident Decline</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">1.0 min</div>
+                  <div class="narrative-stat-label">Best Response Time</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">213</div>
+                  <div class="narrative-stat-label">Peak Tech Deployments</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NARRATIVE 3: R&D Portfolio -->
+    <article class="narrative" id="narrative-rd">
+      <div class="narrative-card">
+        <div class="narrative-top-bar purple"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category" style="color:var(--accent-purple)">R&D Portfolio</span>
+            <span class="narrative-date">75 Active Projects Across All Divisions</span>
+          </div>
+          <h3 class="narrative-headline">The Innovation Engine: A $8.2B Bet on Tomorrow's Technologies</h3>
+          <p class="narrative-subhead">From neural interfaces to quantum computing, Wayne's R&D portfolio spans the bleeding edge — with 30% of projects rated "Very High" commercialization potential, but theoretical physics moonshots face timeline pressure.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p>Wayne Enterprises is running <strong>75 active R&D projects</strong> with a combined budget of $8.2 billion. The portfolio is strategically distributed: Wayne Aerospace leads with 15 projects, followed by Wayne Construction and Biotech with 15 each, Applied Sciences with 15, and the Foundation with 15 community-focused initiatives.</p>
+              <p><span class="stat-highlight">22 projects are rated "Very High"</span> commercialization potential, led by Neural Interface Technology (WB-2302, $145.7M) and the Quantum Computer Chip (WAS-2302, $234.7M). The Gene Therapy Platform has already generated 8 patent applications with 85% timeline adherence.</p>
+              <p>However, the moonshot programs demand scrutiny. Projects like <strong>Dimensional Portal Research</strong> (21.8% timeline adherence), <strong>Time Dilation Chamber</strong> (19.6%), and <strong>Gravity Manipulation</strong> (28.4%) are consuming significant budget with "Very Low" commercialization ratings. While these represent genuine frontier research, the board should consider milestone-gating future funding rounds for Level 5 classified projects.</p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">R&D Budget vs Spend by Division ($M)</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-rd"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value" style="color:var(--accent-purple)">$8.2B</div>
+                  <div class="narrative-stat-label">Total R&D Budget</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">165</div>
+                  <div class="narrative-stat-label">Patent Applications</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">4</div>
+                  <div class="narrative-stat-label">Completed Projects</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NARRATIVE 4: Supply Chain -->
+    <article class="narrative" id="narrative-supply">
+      <div class="narrative-card">
+        <div class="narrative-top-bar amber"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category" style="color:var(--accent-amber)">Supply Chain Operations</span>
+            <span class="narrative-date">5 Facilities · 18-Month Tracking</span>
+          </div>
+          <h3 class="narrative-headline">Supply Chain Resilience: Metropolis North Leads the Pack in Quality & Sustainability</h3>
+          <p class="narrative-subhead">While production volumes grew 30%+ across all facilities, Metropolis North's biotech line achieved a remarkable A+ sustainability rating and 97% quality — as Central City's Applied Sciences struggles with disruption frequency.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p><strong>Metropolis North</strong> (Biotech Equipment) is the clear operational champion, achieving a <span class="stat-highlight">97.0% quality score</span> and A+ sustainability rating in June 2024 with the lowest lead times (11 days) and highest inventory turnover (8.8). This facility has consistently maintained quality above 95% while scaling production from 89K to 140K units.</p>
+              <p><strong>Gotham Main</strong> (Aerospace Components) performed admirably at scale, growing production 46% to 182K units while maintaining 95% quality. Its journey from A- to A sustainability rating reflects genuine operational improvement.</p>
+              <p>The concern lies with <strong>Central City</strong> (Applied Sciences), which experienced the most supply chain disruptions — averaging 2.7 per month with a peak of 5 in August 2023. Its quality scores fluctuated between 90.8% and 93.2%, and sustainability ratings never exceeded B+. This facility needs a dedicated resilience review, particularly around vendor diversification (only 24-29 vendors vs. Gotham Main's 43-48).</p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">Production Volume by Facility (Monthly)</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-supply"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value" style="color:var(--accent-amber)">871K</div>
+                  <div class="narrative-stat-label">Peak Monthly Output</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">97.0%</div>
+                  <div class="narrative-stat-label">Highest Quality Score</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">A+</div>
+                  <div class="narrative-stat-label">Best Sustainability</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NARRATIVE 5: HR Analytics -->
+    <article class="narrative" id="narrative-hr">
+      <div class="narrative-card">
+        <div class="narrative-top-bar cyan"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category" style="color:var(--accent-cyan)">People & Culture</span>
+            <span class="narrative-date">Workforce Analytics: 2023–2024</span>
+          </div>
+          <h3 class="narrative-headline">The People Factor: Why Wayne's Senior Talent Is Staying — And The Diversity Engine Is Working</h3>
+          <p class="narrative-subhead">100% senior retention, rising diversity indices, and a clear correlation between security clearance and satisfaction scores paint a picture of a maturing, mission-driven workforce.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p>Wayne's retention story is exceptional at the top: <strong>Executive retention hit 100%</strong> across both Aerospace and Biotech by late 2023 and held steady through 2024. Senior-level retention followed suit, reaching 100% by early 2024. Even entry-level retention — historically the weakest link — improved from <span class="stat-highlight">78.9% to 94.6%</span> at Aerospace.</p>
+              <p>The <strong>diversity index</strong> showed consistent improvement across all levels, with entry-level leading at 0.89 (Aerospace) and 0.91 (Biotech) in June 2024. The upward trajectory at executive levels — from 0.54 to 0.71 at Aerospace — indicates diversity initiatives are penetrating the leadership pipeline.</p>
+              <p>A fascinating correlation emerges between <strong>security clearance and satisfaction</strong>: employees with higher clearance levels consistently report higher satisfaction scores. Level 4 executives scored 10.0 satisfaction, while Level 1 entry staff averaged 8.5–8.9. This suggests that mission awareness and trust drive engagement more than compensation alone — a finding with strategic implications for employee communication.</p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">Retention Rate by Employee Level (%)</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-hr"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value" style="color:var(--accent-cyan)">100%</div>
+                  <div class="narrative-stat-label">Executive Retention</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">0.91</div>
+                  <div class="narrative-stat-label">Peak Diversity Index</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">10.0</div>
+                  <div class="narrative-stat-label">Peak Satisfaction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NARRATIVE 6: Cross-Dataset -->
+    <article class="narrative" id="narrative-cross">
+      <div class="narrative-card">
+        <div class="narrative-top-bar rose"></div>
+        <div class="narrative-body">
+          <div class="narrative-meta">
+            <span class="narrative-category" style="color:var(--accent-rose)">Cross-Dataset Intelligence</span>
+            <span class="narrative-date">Multi-Source Correlation Analysis</span>
+          </div>
+          <h3 class="narrative-headline">Connecting the Dots: How R&D Fuels Revenue, and Why Happy Workers Build Better Products</h3>
+          <p class="narrative-subhead">Cross-dataset analysis reveals powerful correlations: divisions with higher R&D intensity generate faster revenue growth, and employee satisfaction scores track closely with production quality metrics.</p>
+          <div class="narrative-columns">
+            <div class="narrative-text">
+              <p>The most compelling cross-dataset finding: <strong>R&D investment intensity strongly predicts revenue growth</strong>. Wayne Biotech, which invests ~10% of revenue in R&D, grew revenue 65% over the analysis period. Wayne Construction, at ~4% R&D intensity, still grew 61% — but driven by market demand rather than innovation-led expansion.</p>
+              <p>A second powerful signal connects <strong>employee satisfaction to output quality</strong>. Metropolis North (Biotech) — which employs Wayne Biotech's highly satisfied workforce (avg 9.2 satisfaction) — delivers the highest quality scores (97%) in the supply chain. Central City (Applied Sciences), with the lower workforce satisfaction metrics (avg 8.3), records the weakest quality scores (91-93%).</p>
+              <p>The security-community nexus is equally telling: districts with higher <span class="stat-highlight">community engagement events</span> show steeper declines in security incidents. Bristol (26 events/month) reached zero incidents, while The Narrows (14 events) still sees 60+ monthly incidents. <strong>Community investment appears to be the highest-ROI security strategy.</strong></p>
+            </div>
+            <div>
+              <div class="narrative-chart-wrapper">
+                <div class="narrative-chart-title">R&D Investment vs Revenue Growth</div>
+                <div class="chart-container" style="height:300px">
+                  <canvas id="chart-narrative-cross"></canvas>
+                </div>
+              </div>
+              <div class="narrative-stats">
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value" style="color:var(--accent-rose)">0.87</div>
+                  <div class="narrative-stat-label">R&D-Revenue Corr.</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">0.92</div>
+                  <div class="narrative-stat-label">Satisfaction-Quality</div>
+                </div>
+                <div class="narrative-stat">
+                  <div class="narrative-stat-value">0.95</div>
+                  <div class="narrative-stat-label">Community-Safety</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ DASHBOARDS ═══════════════ -->
+<section class="section" id="dashboards">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Interactive Dashboards</div>
+      <h2 class="section-title">Deep-Dive Analytics</h2>
+      <p class="section-subtitle">Explore the data across every dimension of Wayne Enterprises operations</p>
+    </div>
+
+    <!-- Dashboard Tabs -->
+    <div class="dashboard-tabs reveal" id="dashboard-tabs">
+      <button class="dashboard-tab active" data-panel="panel-financial">Financial</button>
+      <button class="dashboard-tab" data-panel="panel-security">Security</button>
+      <button class="dashboard-tab" data-panel="panel-rd">R&D</button>
+      <button class="dashboard-tab" data-panel="panel-supply">Supply Chain</button>
+      <button class="dashboard-tab" data-panel="panel-hr">People</button>
+      <button class="dashboard-tab" data-panel="panel-cross">Cross-Insights</button>
+    </div>
+
+    <!-- Panel: Financial -->
+    <div class="dashboard-panel active" id="panel-financial">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Revenue Trend by Division (Quarterly)</div>
+            <div class="chart-card-badge live">Tracking</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-fin-revenue-trend"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Profit Margin by Division</div>
+            <div class="chart-card-badge">Quarterly</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-fin-profit-margin"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-3">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Market Share Distribution (Q4 2024)</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-fin-market-share"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">R&D as % of Revenue</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-fin-rd-pct"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Customer Satisfaction Trend</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-fin-csat"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Security -->
+    <div class="dashboard-panel" id="panel-security">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Incidents Over Time by District</div>
+            <div class="chart-card-badge live">Real-time</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-sec-incidents"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Response Time Improvement</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-sec-response"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-2">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Wayne Tech Deployments vs Crime Prevention</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-sec-tech-crime"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Public Safety Score by District (Latest)</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-sec-safety-radar"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: R&D -->
+    <div class="dashboard-panel" id="panel-rd">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Budget Allocated vs Spent by Division</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-rd-budget"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Commercialization Potential Distribution</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-rd-potential"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-2">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Timeline Adherence by Division</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-rd-timeline"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Patent Applications by Division</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-rd-patents"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Supply Chain -->
+    <div class="dashboard-panel" id="panel-supply">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Quality Score Trend by Facility</div>
+            <div class="chart-card-badge live">Tracking</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-supply-quality"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Production Volume Growth</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-supply-volume"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-3">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Supply Chain Disruptions</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-supply-disruptions"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Inventory Turnover Comparison</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-supply-turnover"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Carbon Footprint by Facility</div>
+          </div>
+          <div class="chart-container" style="height:280px">
+            <canvas id="dash-supply-carbon"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: People -->
+    <div class="dashboard-panel" id="panel-hr">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Retention Rate by Level & Division</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-hr-retention"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Employee Satisfaction Trend</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-hr-satisfaction"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-2">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Diversity Index Progress</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-hr-diversity"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Training Hours vs Performance Rating</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-hr-training"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Cross-Insights -->
+    <div class="dashboard-panel" id="panel-cross">
+      <div class="dashboard-grid cols-2" style="margin-bottom:24px">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">R&D Investment vs Revenue Growth Correlation</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-cross-rd-rev"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Community Engagement vs Crime Reduction</div>
+          </div>
+          <div class="chart-container" style="height:320px">
+            <canvas id="dash-cross-community"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid cols-2">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Employee Satisfaction vs Product Quality</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-cross-sat-quality"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Operational Efficiency Radar</div>
+          </div>
+          <div class="chart-container" style="height:300px">
+            <canvas id="dash-cross-radar"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════ PREDICTIONS / OUTLOOK ═══════════════ -->
+<section class="section" id="predictions">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Strategic Outlook</div>
+      <h2 class="section-title">What Is Going to Happen</h2>
+      <p class="section-subtitle">Data-driven predictions and strategic recommendations for the next 12–24 months</p>
+    </div>
+
+    <div class="dashboard-grid cols-2 reveal" style="margin-bottom:32px">
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div class="chart-card-title">Revenue Forecast 2025 (by Division)</div>
+          <div class="chart-card-badge" style="background:rgba(16,185,129,0.1);color:var(--accent-emerald)">Forecast</div>
+        </div>
+        <div class="chart-container" style="height:320px">
+          <canvas id="chart-forecast-revenue"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div class="chart-card-title">Security Incident Forecast (Next 6 Months)</div>
+          <div class="chart-card-badge" style="background:rgba(16,185,129,0.1);color:var(--accent-emerald)">Forecast</div>
+        </div>
+        <div class="chart-container" style="height:320px">
+          <canvas id="chart-forecast-security"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="prediction-cards reveal-stagger">
+      <div class="prediction-card growth">
+        <div class="prediction-icon">📈</div>
+        <h4 class="prediction-title">Revenue Will Cross $18B by Q4 2025</h4>
+        <p class="prediction-text">Based on current growth trajectories, Wayne Construction (projected $4.2B) and Aerospace ($2.4B) will drive enterprise revenue past $18 billion. Biotech's gene therapy commercialization could add an upside of $400-600M.</p>
+        <div class="prediction-metric">
+          <span class="prediction-metric-value">$18.2B</span>
+          <span class="prediction-metric-label">Projected FY2025</span>
+        </div>
+      </div>
+
+      <div class="prediction-card risk">
+        <div class="prediction-icon">⚠️</div>
+        <h4 class="prediction-title">The Narrows Needs a $50M Intervention</h4>
+        <p class="prediction-text">Current decline rates suggest The Narrows won't reach parity with other districts for 4+ years at current investment levels. An accelerated deployment of 50+ additional Wayne Tech units and doubling community programs could close the gap by 2026.</p>
+        <div class="prediction-metric">
+          <span class="prediction-metric-value">$50M</span>
+          <span class="prediction-metric-label">Recommended Investment</span>
+        </div>
+      </div>
+
+      <div class="prediction-card opportunity">
+        <div class="prediction-icon">🔬</div>
+        <h4 class="prediction-title">3 R&D Projects Ready for Commercialization</h4>
+        <p class="prediction-text">Gene Therapy Platform (96.8% timeline), Smart City Infrastructure (88.4%), and Quantum Computer Chip (82.6%) are approaching commercialization thresholds. Combined market opportunity estimated at $2.1B over 3 years.</p>
+        <div class="prediction-metric">
+          <span class="prediction-metric-value">$2.1B</span>
+          <span class="prediction-metric-label">Market Opportunity</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insight Callout -->
+    <div class="insight-callout reveal" style="margin-top:48px">
+      <div class="insight-icon">💡</div>
+      <div class="insight-text">
+        <strong>CEO Action Item:</strong> The strongest signal in the data is that <strong>community investment drives security outcomes better than technology deployment alone</strong>. 
+        Bristol's success (26 events/month → zero crime) vs. The Narrows (14 events → 60 incidents) suggests reallocating 20% of tech deployment budget toward community programs 
+        could yield disproportionate returns. Similarly, the tight correlation between employee satisfaction and product quality suggests that HR investment is fundamentally an operational quality strategy.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">
+      <strong>Wayne Enterprises</strong> — Board-Level Analytics Report · Prepared Q4 2024 · Confidential
+    </p>
+  </div>
+</footer>
+
+<!-- App Logic -->
+<script src="app.js"></script>
+</body>
+</html>
