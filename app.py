@@ -257,14 +257,7 @@ with cols_header[0]:
         </div>
     """, unsafe_allow_html=True)
 
-with cols_header[1]:
-    st.markdown("""
-        <div style='text-align: right; margin-top: 8px;'>
-            <div style='color: #64748b; font-size: 0.85rem; font-weight: 500;'>Prepared for the Incoming CEO · Q4 2024</div>
-        </div>
-    """, unsafe_allow_html=True)
 
-st.markdown("<hr style='border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 20px; margin-bottom: 30px;'>", unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════
 #  HERO SECTION (KPIs)
