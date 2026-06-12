@@ -547,7 +547,8 @@ with st.container():
                 x=levels,
                 y=sub_df['Retention_Rate_Pct'],
                 name=dept.replace('Wayne ', ''),
-                marker_color=hr_colors[idx]
+                fill='tozeroy',                # Tells Plotly WHERE to fill (down to the Y=0 axis)
+                fillcolor='rgba(0,0,0,0)'
             ))
         
         fig.update_layout(barmode='group', xaxis_title="Employee Level", yaxis_title="% Retention", yaxis=dict(range=[85, 102]))
