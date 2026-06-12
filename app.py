@@ -356,7 +356,7 @@ with st.container():
             ))
         
         fig.update_layout(barmode='group', xaxis_title="Quarter", yaxis_title="Revenue ($M)")
-        st.plotly_chart(style_plotly_fig(fig, "Quarterly Revenue by Division ($M)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Quarterly Revenue by Division ($M)", height=320), use_container_width=True)
         
         # Stats Grid
         s1, s2, s3 = st.columns(3)
@@ -399,12 +399,12 @@ with st.container():
                 name=dist,
                 mode='lines+markers',
                 line=dict(color=dist_colors[idx], width=2),
-                fill='tonexty' if dist == 'The Narrows' else None,
+                fill='tozeroy' if dist == 'The Narrows' else 'none',  # Fixed parameter setting to valid option
                 marker=dict(size=4)
             ))
         
         fig.update_layout(xaxis_title="Date", yaxis_title="Incidents")
-        st.plotly_chart(style_plotly_fig(fig, "Security Incidents by District (Monthly Trend)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Security Incidents by District (Monthly Trend)", height=320), use_container_width=True)
         
         s1, s2, s3 = st.columns(3)
         s1.metric("Avg Incident Decline", "-42%")
@@ -454,7 +454,7 @@ with st.container():
         ))
         
         fig.update_layout(barmode='group', xaxis_title="Budget ($M)", yaxis_title="Division")
-        st.plotly_chart(style_plotly_fig(fig, "R&D Budget vs Spend by Division ($M)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "R&D Budget vs Spend by Division ($M)", height=320), use_container_width=True)
         
         s1, s2, s3 = st.columns(3)
         s1.metric("Total R&D Budget", "$8.2B")
@@ -501,7 +501,7 @@ with st.container():
             ))
         
         fig.update_layout(xaxis_title="Date", yaxis_title="Units")
-        st.plotly_chart(style_plotly_fig(fig, "Production Volume by Facility (Monthly)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Production Volume by Facility (Monthly)", height=320), use_container_width=True)
         
         s1, s2, s3 = st.columns(3)
         s1.metric("Peak Monthly Output", "871K")
@@ -541,18 +541,16 @@ with st.container():
         fig = go.Figure()
         for idx, dept in enumerate(depts):
             sub_df = hr_latest[hr_latest['Department'] == dept]
-            # align levels
             sub_df = sub_df.set_index('Employee_Level').reindex(levels).reset_index()
             fig.add_trace(go.Bar(
                 x=levels,
                 y=sub_df['Retention_Rate_Pct'],
                 name=dept.replace('Wayne ', ''),
-                # ✔ Fix 1: Removed invalid fill / fillcolor parameters, styled with marker dict
                 marker=dict(color=hr_colors[idx])
             ))
         
         fig.update_layout(barmode='group', xaxis_title="Employee Level", yaxis_title="% Retention", yaxis=dict(range=[85, 102]))
-        st.plotly_chart(style_plotly_fig(fig, "Retention Rate by Employee Level (%)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Retention Rate by Employee Level (%)", height=320), use_container_width=True)
         
         s1, s2, s3 = st.columns(3)
         s1.metric("Executive Retention", "100%")
@@ -604,7 +602,7 @@ with st.container():
             xaxis=dict(title="R&D as % of Revenue", range=[3, 12]),
             yaxis=dict(title="Revenue Growth (%)", range=[40, 80]),
         )
-        st.plotly_chart(style_plotly_fig(fig, "R&D Investment vs Revenue Growth", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "R&D Investment vs Revenue Growth", height=320), use_container_width=True)
         
         s1, s2, s3 = st.columns(3)
         s1.metric("R&D-Revenue Corr.", "0.87")
@@ -646,7 +644,7 @@ with dash_tabs[0]:
                 fill='none'
             ))
         fig.update_layout(xaxis_title="Quarter", yaxis_title="Revenue ($M)")
-        st.plotly_chart(style_plotly_fig(fig, "Revenue Trend by Division (Quarterly)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Revenue Trend by Division (Quarterly)", height=320), use_container_width=True)
         
     with t1_col2:
         # Profit Margin Line Chart
@@ -662,7 +660,7 @@ with dash_tabs[0]:
                 line=dict(color=div_colors[idx], width=2, dash='dash' if div == 'Wayne Construction' else None)
             ))
         fig.update_layout(xaxis_title="Quarter", yaxis_title="Margin (%)", yaxis=dict(range=[15, 40]))
-        st.plotly_chart(style_plotly_fig(fig, "Profit Margin by Division", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Profit Margin by Division", height=320), use_container_width=True)
 
     t1_b1, t1_b2, t1_b3 = st.columns(3)
     
@@ -679,7 +677,7 @@ with dash_tabs[0]:
             hole=0.65,
             color_discrete_sequence=[COLORS['blue'], COLORS['emerald'], COLORS['purple'], COLORS['amber']]
         )
-        st.plotly_chart(style_plotly_fig(fig, "Market Share Distribution (Q4 2024)", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Market Share Distribution (Q4 2024)", height=280), use_container_width=True)
         
     with t1_b2:
         # R&D as % of Revenue
@@ -697,7 +695,7 @@ with dash_tabs[0]:
             }
         )
         fig.update_layout(showlegend=False, xaxis_title="Division", yaxis_title="% of Revenue")
-        st.plotly_chart(style_plotly_fig(fig, "R&D as % of Revenue", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "R&D as % of Revenue", height=280), use_container_width=True)
         
     with t1_b3:
         # Customer Satisfaction Trend
@@ -713,7 +711,7 @@ with dash_tabs[0]:
                 marker=dict(size=4)
             ))
         fig.update_layout(xaxis_title="Quarter", yaxis_title="Score (out of 5)", yaxis=dict(range=[3.5, 5.0]))
-        st.plotly_chart(style_plotly_fig(fig, "Customer Satisfaction Trend", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Customer Satisfaction Trend", height=280), use_container_width=True)
 
 
 # ─── Tab 2: Security ───
@@ -734,7 +732,7 @@ with dash_tabs[1]:
                 line=dict(color=dist_colors[idx], width=1.5)
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Incidents")
-        st.plotly_chart(style_plotly_fig(fig, "Incidents Over Time by District", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Incidents Over Time by District", height=320), use_container_width=True)
         
     with t2_col2:
         # Response Time Improvement
@@ -749,7 +747,7 @@ with dash_tabs[1]:
                 line=dict(color=dist_colors[idx], width=1.5)
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Minutes")
-        st.plotly_chart(style_plotly_fig(fig, "Response Time Improvement", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Response Time Improvement", height=320), use_container_width=True)
 
     t2_b1, t2_b2 = st.columns(2)
     
@@ -767,7 +765,7 @@ with dash_tabs[1]:
                 marker=dict(color=dist_colors[idx], size=16, line=dict(width=1, color='#ffffff'))
             ))
         fig.update_layout(xaxis_title="Wayne Tech Deployments", yaxis_title="Crime Prevention (%)", yaxis=dict(range=[60, 102]))
-        st.plotly_chart(style_plotly_fig(fig, "Wayne Tech Deployments vs Crime Prevention", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Wayne Tech Deployments vs Crime Prevention", height=300), use_container_width=True)
         
     with t2_b2:
         # Public Safety Radar
@@ -790,7 +788,7 @@ with dash_tabs[1]:
             polar=dict(radialaxis=dict(visible=True, range=[5, 11])),
             showlegend=True
         )
-        st.plotly_chart(style_plotly_fig(fig, "Public Safety Score by District (Latest)", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Public Safety Score by District (Latest)", height=300), use_container_width=True)
 
 
 # ─── Tab 3: R&D ───
@@ -814,7 +812,7 @@ with dash_tabs[2]:
             marker_color=COLORS['cyan']
         ))
         fig.update_layout(barmode='group', xaxis_title="Division", yaxis_title="$M")
-        st.plotly_chart(style_plotly_fig(fig, "Budget Allocated vs Spent by Division", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Budget Allocated vs Spent by Division", height=320), use_container_width=True)
         
     with t3_col2:
         # Commercialization potential distribution (Doughnut)
@@ -827,19 +825,14 @@ with dash_tabs[2]:
             hole=0.6,
             color_discrete_sequence=[COLORS['emerald'], COLORS['blue'], COLORS['amber'], COLORS['rose'], '#64748b']
         )
-        st.plotly_chart(style_plotly_fig(fig, "Commercialization Potential Distribution", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Commercialization Potential Distribution", height=320), use_container_width=True)
 
     t3_b1, t3_b2 = st.columns(2)
     
     with t3_b1:
         # Timeline Adherence (Bar)
         rd_timeline = rdData.groupby('Division')['Timeline_Adherence_Pct'].mean().reset_index()
-        colors_list = []
-        for v in rd_timeline['Timeline_Adherence_Pct']:
-            if v > 75: colors_list.append(COLORS['emerald'])
-            elif v > 50: colors_list.append(COLORS['amber'])
-            else: colors_list.append(COLORS['rose'])
-            
+        
         fig = px.bar(
             rd_timeline,
             x=rd_timeline['Division'].str.replace('Wayne ', ''),
@@ -848,7 +841,7 @@ with dash_tabs[2]:
             color_continuous_scale=[[0, COLORS['rose']], [0.5, COLORS['amber']], [1.0, COLORS['emerald']]]
         )
         fig.update_layout(showlegend=False, coloraxis_showscale=False, xaxis_title="Division", yaxis_title="% Adherence", yaxis=dict(range=[0, 100]))
-        st.plotly_chart(style_plotly_fig(fig, "Timeline Adherence by Division", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Timeline Adherence by Division", height=300), use_container_width=True)
         
     with t3_b2:
         # Patent Applications (Bar)
@@ -861,7 +854,7 @@ with dash_tabs[2]:
             color_discrete_sequence=[COLORS['purple'], COLORS['emerald'], COLORS['blue'], COLORS['amber'], COLORS['rose']]
         )
         fig.update_layout(showlegend=False, xaxis_title="Division", yaxis_title="Patents")
-        st.plotly_chart(style_plotly_fig(fig, "Patent Applications by Division", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Patent Applications by Division", height=300), use_container_width=True)
 
 
 # ─── Tab 4: Supply Chain ───
@@ -882,7 +875,7 @@ with dash_tabs[3]:
                 line=dict(color=fac_colors[idx], width=1.5)
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Quality (%)", yaxis=dict(range=[88, 98]))
-        st.plotly_chart(style_plotly_fig(fig, "Quality Score Trend by Facility", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Quality Score Trend by Facility", height=320), use_container_width=True)
         
     with t4_col2:
         # Production volume growth
@@ -898,7 +891,7 @@ with dash_tabs[3]:
                 fill='none'
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Units")
-        st.plotly_chart(style_plotly_fig(fig, "Production Volume Growth", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Production Volume Growth", height=320), use_container_width=True)
 
     t4_b1, t4_b2, t4_b3 = st.columns(3)
     
@@ -913,7 +906,7 @@ with dash_tabs[3]:
             color_discrete_sequence=[COLORS['blue'], COLORS['emerald'], COLORS['amber'], COLORS['rose'], COLORS['purple']]
         )
         fig.update_layout(showlegend=False, xaxis_title="Facility", yaxis_title="Avg Disruptions/Month")
-        st.plotly_chart(style_plotly_fig(fig, "Supply Chain Disruptions", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Supply Chain Disruptions", height=280), use_container_width=True)
         
     with t4_b2:
         # Inventory Turnover
@@ -926,7 +919,7 @@ with dash_tabs[3]:
             color_discrete_sequence=[COLORS['blue'], COLORS['emerald'], COLORS['amber'], COLORS['rose'], COLORS['purple']]
         )
         fig.update_layout(showlegend=False, xaxis_title="Facility", yaxis_title="Turns/Year")
-        st.plotly_chart(style_plotly_fig(fig, "Inventory Turnover Comparison", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Inventory Turnover Comparison", height=280), use_container_width=True)
         
     with t4_b3:
         # Carbon Footprint
@@ -939,7 +932,7 @@ with dash_tabs[3]:
             color_discrete_sequence=[COLORS['blue'], COLORS['emerald'], COLORS['amber'], COLORS['rose'], COLORS['purple']]
         )
         fig.update_layout(showlegend=False, xaxis_title="Facility", yaxis_title="Metric Tons")
-        st.plotly_chart(style_plotly_fig(fig, "Carbon Footprint by Facility", height=280), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Carbon Footprint by Facility", height=280), use_container_width=True)
 
 
 # ─── Tab 5: People ───
@@ -959,7 +952,7 @@ with dash_tabs[4]:
                 marker_color=hr_colors[idx]
             ))
         fig.update_layout(barmode='group', xaxis_title="Employee Level", yaxis_title="% Retention", yaxis=dict(range=[85, 102]))
-        st.plotly_chart(style_plotly_fig(fig, "Retention Rate by Level & Division", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Retention Rate by Level & Division", height=320), use_container_width=True)
         
     with t5_col2:
         # Employee Satisfaction Trend
@@ -979,7 +972,7 @@ with dash_tabs[4]:
                 line=dict(color=hr_colors[idx])
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Satisfaction Score", yaxis=dict(range=[6, 10]))
-        st.plotly_chart(style_plotly_fig(fig, "Employee Satisfaction Trend", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Employee Satisfaction Trend", height=320), use_container_width=True)
 
     t5_b1, t5_b2 = st.columns(2)
     
@@ -997,7 +990,7 @@ with dash_tabs[4]:
                 line=dict(color=hr_colors[idx])
             ))
         fig.update_layout(xaxis_title="Date", yaxis_title="Diversity Index", yaxis=dict(range=[0.6, 1.0]))
-        st.plotly_chart(style_plotly_fig(fig, "Diversity Index Progress", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Diversity Index Progress", height=300), use_container_width=True)
         
     with t5_b2:
         # Training Hours vs Performance scatter
@@ -1012,7 +1005,7 @@ with dash_tabs[4]:
                 marker=dict(color=hr_colors[idx], size=12, line=dict(width=1, color='#ffffff'))
             ))
         fig.update_layout(xaxis_title="Training Hours", yaxis_title="Performance Rating")
-        st.plotly_chart(style_plotly_fig(fig, "Training Hours vs Performance Rating", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Training Hours vs Performance Rating", height=300), use_container_width=True)
 
 
 # ─── Tab 6: Cross-Insights ───
@@ -1045,7 +1038,7 @@ with dash_tabs[5]:
         fig.update_layout(xaxis_title="Quarter")
         fig.update_yaxes(title_text="Revenue ($M)", secondary_y=False)
         fig.update_yaxes(title_text="R&D ($M)", secondary_y=True)
-        st.plotly_chart(style_plotly_fig(fig, "R&D Investment vs Revenue Growth Correlation", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "R&D Investment vs Revenue Growth Correlation", height=320), use_container_width=True)
         
     with t6_col2:
         # Community Engagement vs Crime Reduction
@@ -1061,7 +1054,7 @@ with dash_tabs[5]:
                 marker=dict(color=dist_colors[idx], size=16, line=dict(width=1, color='#ffffff'))
             ))
         fig.update_layout(xaxis_title="Community Events/Month", yaxis_title="Security Incidents", yaxis=dict(range=[0, 100]))
-        st.plotly_chart(style_plotly_fig(fig, "Community Engagement vs Crime Reduction", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Community Engagement vs Crime Reduction", height=320), use_container_width=True)
 
     t6_b1, t6_b2 = st.columns(2)
     
@@ -1081,7 +1074,7 @@ with dash_tabs[5]:
                 marker=dict(color=hr_colors[idx], size=20, line=dict(width=2, color='#ffffff'))
             ))
         fig.update_layout(xaxis_title="Avg Employee Satisfaction", yaxis_title="Avg Product Quality (%)", xaxis=dict(range=[7.0, 10.0]), yaxis=dict(range=[90.0, 98.0]))
-        st.plotly_chart(style_plotly_fig(fig, "Employee Satisfaction vs Product Quality", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Employee Satisfaction vs Product Quality", height=300), use_container_width=True)
         
     with t6_b2:
         # Operational Efficiency Radar
@@ -1107,7 +1100,7 @@ with dash_tabs[5]:
                 line_color=div_colors[idx]
             ))
         fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True)
-        st.plotly_chart(style_plotly_fig(fig, "Operational Efficiency Radar", height=300), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Operational Efficiency Radar", height=300), use_container_width=True)
 
 
 st.markdown("<hr style='border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 30px; margin-bottom: 40px;'>", unsafe_allow_html=True)
@@ -1168,11 +1161,11 @@ with outlook_cols[1]:
             growth_rate = (last4[3] - last4[0]) / last4[0]
             quarterly = growth_rate / 3
             
-            base = last4[3]
+            base_rev = last4[3]
             forecast = []
             for q in range(4):
-                base = base * (1 + quarterly * 0.9)
-                forecast.append(round(base, 1))
+                base_rev = base_rev * (1 + quarterly * 0.9)
+                forecast.append(round(base_rev, 1))
                 
             full_series = hist_data + forecast
             
@@ -1194,7 +1187,7 @@ with outlook_cols[1]:
                 marker=dict(symbol='triangle-up', size=6)
             ))
         fig.update_layout(xaxis_title="Quarter", yaxis_title="Revenue ($M)")
-        st.plotly_chart(style_plotly_fig(fig, "Revenue Forecast 2025 ($M)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Revenue Forecast 2025 ($M)", height=320), use_container_width=True)
         
     with sub_col2:
         # Security Incident Forecast
@@ -1210,12 +1203,12 @@ with outlook_cols[1]:
             last6 = dist_data[-6:]
             monthly_decline = (last6[0] - last6[-1]) / 6
             
-            base = last6[-1]
+            # ✔ Fix 2: Isolated 'current_base' to separate namespacing from outer references
+            current_base = last6[-1]
             forecast = []
             for m in range(6):
-                # ✔ Fix 2: Standardized variable referencing here to prevent name scoping bugs
-                base = max(0, base - monthly_decline * 0.8)
-                forecast.append(round(base))
+                current_base = max(0, current_base - monthly_decline * 0.8)
+                forecast.append(round(current_base))
                 
             full_series = dist_data + forecast
             
@@ -1236,7 +1229,7 @@ with outlook_cols[1]:
                 line=dict(color=dist_colors[districts.index(dist)], width=2, dash='dash')
             ))
         fig.update_layout(xaxis_title="Month", yaxis_title="Incidents")
-        st.plotly_chart(style_plotly_fig(fig, "Security Incident Forecast (Next 6 Months)", height=320), width='stretch')
+        st.plotly_chart(style_plotly_fig(fig, "Security Incident Forecast (Next 6 Months)", height=320), use_container_width=True)
 
 # Strategic Insight Callout
 st.markdown("""
