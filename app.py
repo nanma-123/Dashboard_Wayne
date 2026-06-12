@@ -260,7 +260,6 @@ with cols_header[0]:
 with cols_header[1]:
     st.markdown("""
         <div style='text-align: right; margin-top: 8px;'>
-            <div class='badge'>Confidential — Board Level Report</div>
             <div style='color: #64748b; font-size: 0.85rem; font-weight: 500;'>Prepared for the Incoming CEO · Q4 2024</div>
         </div>
     """, unsafe_allow_html=True)
